@@ -19,6 +19,8 @@ RUN apt update && \
     tcl8.6-dev \
     librtlsdr-dev \
     libgsm1-dev \
-    libcurl4-openssl-dev 
-
+    libcurl4-openssl-dev \
+    libasyncaudio-dev \
+    libopus-dev \
+    alsa-utils
 
