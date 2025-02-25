@@ -21,6 +21,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
+          apt-get install nodejs npm
           mkdir -p svxlink/src/build
           cd svxlink/src/build
           cmake ..
