@@ -22,5 +22,7 @@ RUN apt update && \
     libcurl4-openssl-dev \
     libasyncaudio-dev \
     libopus-dev \
-    alsa-utils
+    alsa-utils \
+    nodejs \
+    npm
 
