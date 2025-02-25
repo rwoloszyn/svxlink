@@ -23,6 +23,5 @@ RUN apt update && \
     libasyncaudio-dev \
     libopus-dev \
     alsa-utils \
-    nodejs \
-    npm
+    nodejs 
 

@@ -1,4 +1,4 @@
-name: "BuildCode"
+name: "BuildDockerImage"
 
 on:
   push:
@@ -6,8 +6,6 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ feat/docker_and_cleanup ]
-  # schedule:
-  #   - cron: '43 7 * * 2'
 
 jobs:
   docker:
