@@ -1,0 +1,27 @@
+name: "BuildDockerImage"
+
+on:
+  push:
+    branches: [ feat/docker_and_cleanup ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ feat/docker_and_cleanup ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+        image: ghcr.io/rwoloszyn/svxlink-build:latest
+        credentials:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build
+        shell: bash
+        run: |
+          mkdir -p svxlink/src/build
+          cd svxlink/src/build
+          cmake ..
+          make
