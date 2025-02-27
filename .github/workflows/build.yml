@@ -10,18 +10,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-        image: ghcr.io/rwoloszyn/svxlink-build:latest
-        credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+    # container:
+    #     image: ghcr.io/rwoloszyn/svxlink-build:latest
+    #     credentials:
+    #       username: ${{ github.actor }}
+    #       password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
-      - name: Build
-        shell: bash
-        run: |
-          mkdir -p svxlink/src/build
-          cd svxlink/src/build
-          cmake ..
-          make
+        uses: actions/checkout@v4
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
+        with:
+            image: ghcr.io/rwoloszyn/svxlink-build:latest
+            options: -v ${{ github.workspace }}:/app
+            run: |
+                mkdir -p /app/svxlink/src/build
+                cd /app/svxlink/src/build
+                cmake ..
+                make
